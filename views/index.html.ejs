@@ -13,7 +13,7 @@
     <p>This is the cookie we sent in response for you to set: <code><%= uuid %></code></p>
     <button id="#refresh">Click here to refresh the page</button>
     <script>
-        document.getElementById("#refresh").addEventListener('click', () => { document.location.reload() })
+        document.getElementById("#refresh").addEventListener('click', () => { document.location.href = '/redirect' })
     </script>
 </body>
 </html>
