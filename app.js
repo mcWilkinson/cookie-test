@@ -13,12 +13,15 @@ app.get('/', function(req, res) {
   const newCookie = req.cookies["cool-cookie"];
   const oldCookie = req.cookies["prev-cookie"];
 
+  res.status(Number(req.query.code) > 200 ? Number(req.query.code) : 200);
+
   res.render('index.html.ejs', { oldCookie, newCookie });
 });
 
 app.get('/redirect', function(req, res) {
   const uuid = crypto.randomUUID();
   const oldCookie = req.cookies["cool-cookie"];
+  const code = req.query["code"];
 
 
   res.cookie('prev-cookie', oldCookie, {
@@ -34,8 +37,20 @@ app.get('/redirect', function(req, res) {
     httpOnly: false
   })
 
-  res.redirect('/')
+  res.redirect(`/?code=${code}`)
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(port, () => {
 })

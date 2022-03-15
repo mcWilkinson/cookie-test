@@ -5,15 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Cookie Tester</title>
+    <style>
+        button {
+            margin: 8px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Welcome to the cookie tester</h1>
     <p>This is the cookie you sent with your request to load the page: <code><%= oldCookie %></code></p>
     <p>This is the cookie we sent in response for you to set: <code><%= newCookie %></code></p>
-    <button id="#refresh">Click here to refresh the page</button>
+    <button id="#refresh">Click here to refresh the page (200)</button>
+    <button id="#refresh201">Click here to refresh the page (201)</button>
+    <button id="#refresh400">Click here to refresh the page (400)</button>
+    <button id="#refresh403">Click here to refresh the page (403)</button>
+    <button id="#refresh404">Click here to refresh the page (404)</button>
+    <button id="#refresh500">Click here to refresh the page (500)</button>
+    <button id="#refresh301">Click here to refresh the page (301)</button>
     <script>
-        document.getElementById("#refresh").addEventListener('click', () => { document.location.href = '/redirect' })
+      document.getElementById("#refresh").addEventListener('click', () => { document.location.href = '/redirect' })
+      document.getElementById("#refresh201").addEventListener('click', () => { document.location.href = '/redirect?code=201' })
+      document.getElementById("#refresh400").addEventListener('click', () => { document.location.href = '/redirect?code=400' })
+      document.getElementById("#refresh403").addEventListener('click', () => { document.location.href = '/redirect?code=403' })
+      document.getElementById("#refresh404").addEventListener('click', () => { document.location.href = '/redirect?code=404' })
+      document.getElementById("#refresh500").addEventListener('click', () => { document.location.href = '/redirect?code=500' })
+      document.getElementById("#refresh301").addEventListener('click', () => { document.location.href = '/redirect?code=301' })
     </script>
 </body>
 </html>
