@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cookie Tester</title>
+</head>
+
+<body>
+    <h1>Welcome to the cookie tester</h1>
+    <p>This is the cookie you sent with your request to load the page: <code><%= oldCookie %></code></p>
+    <p>This is the cookie we sent in response for you to set: <code><%= uuid %></code></p>
+    <button id="#refresh">Click here to refresh the page</button>
+    <script>
+        document.getElementById("#refresh").addEventListener('click', () => { document.location.reload() })
+    </script>
+</body>
+</html>
