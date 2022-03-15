@@ -10,14 +10,24 @@ app.set('view engine', 'ejs');
 app.use(cookieParser())
 
 app.get('/', function(req, res) {
-  const uuid = crypto.randomUUID();
+  const newCookie = req.cookies["cool-cookie"];
+  const oldCookie = req.cookies["prev-cookie"];
 
-  const oldCookie = req.cookies["cool-cookie"];
-
-  res.render('index.html.ejs', { oldCookie, uuid });
+  res.render('index.html.ejs', { oldCookie, newCookie });
 });
 
 app.get('/redirect', function(req, res) {
+  const uuid = crypto.randomUUID();
+  const oldCookie = req.cookies["cool-cookie"];
+
+
+  res.cookie('prev-cookie', oldCookie, {
+    path: '/',
+    secure: false,
+    httpOnly: false
+  })
+
+
   res.cookie('cool-cookie', uuid, {
     path: '/',
     secure: false,
