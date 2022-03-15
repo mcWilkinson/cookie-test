@@ -30,16 +30,18 @@ app.get('/redirect', function(req, res) {
     httpOnly: false
   })
 
-
   res.cookie('cool-cookie', uuid, {
     path: '/',
     secure: false,
     httpOnly: false
   })
 
-  res.redirect(`/?code=${code}`)
+  res.redirect(`/land?code=${code}`)
 });
 
+app.get('/land', function(req, res) {
+  res.render('land.html.ejs', {code: req.params.code});
+})
 
 
 
